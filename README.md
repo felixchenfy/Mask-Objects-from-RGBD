@@ -6,14 +6,15 @@ Use a depth camera to detect objects on table and get their mask in 2D image.
 <p align = "center"> 
   <img src = "doc/RealsenseDepthCamera.png" height = "40px">
 </p>
-
-![](doc/picture_demo.png)
+<p align = "center"> 
+  <img src = "doc/picture_demo.png" height = "300px">
+</p>
 
 # **Algorithm**
 1. Get the point cloud from rgbd image (rgbd image = color + depth image)  
-2. Detect plane and remove points of the table surface.   
+2. Detect and remove plane (table surface). The rest clouds are the objects.   
 3. Do clustering. Each cluster is an object.  
-4. Project 3D points onto 2D image to obtain the mask of object.  
+4. Project 3D points onto 2D image to obtain the mask of objects.  
 5. Do a dilation and erosion to fill holes, and get the final mask.  
 
 
@@ -23,7 +24,7 @@ Use a depth camera to detect objects on table and get their mask in 2D image.
 
 ### 1.1 Set data source in [launch/main.launch](launch/main.launch)
 
-There are 3 choices of the data source of RGBD-D images:  
+There are 3 choices for the input RGBD-D images:  
 (1). Realsense camera.  
 (2). AsusXtion camera.  
 (3). Load from file.
